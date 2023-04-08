@@ -23,6 +23,9 @@ public class MedicoController {
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemMedico>> listar(@PageableDefault(size = 15, sort = {"nome"}) Pageable pageable){
+
+
+
         Page<DadosListagemMedico> page =  medicoRepository.findAllByAtivoTrue(pageable).map(DadosListagemMedico::new);
         return ResponseEntity.ok(page);
     }
@@ -59,7 +62,6 @@ public class MedicoController {
     public ResponseEntity<?> listarUmMedico(@PathVariable Long id){
 
         Medico medico = medicoRepository.getReferenceById(id);
-
         return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
     }
 
