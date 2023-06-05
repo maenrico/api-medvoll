@@ -31,6 +31,6 @@ public class ConsultaController {
     @Transactional
     public ResponseEntity<?> deletarConsulta(@RequestBody @Valid DadosCancelamentoConsulta dados) {
         agenda.excluirConsulta(dados);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
